@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="930" viewBox="0 0 1480 930" role="img" aria-labelledby="title desc">
+  <title id="title">ESP32-S3 BLE air mouse wiring diagram</title>
+  <desc id="desc">Shows the battery and switch feeding a combined TP4056 charger and 5 volt boost module, the boost output powering the ESP32-S3, the MPU-6050 wired to GPIO 8 and 9 and 3.3 volts, and active-low click buttons on GPIO 10 and 11.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f5f7fb}.card{fill:#fff;stroke:#cbd5e1;stroke-width:2}.dark{fill:#0f172a}.panel{fill:#111827;stroke:#334155;stroke-width:2}.title{font:700 30px system-ui,sans-serif;fill:#0f172a}.subtitle{font:16px system-ui,sans-serif;fill:#475569}.head{font:700 19px system-ui,sans-serif;fill:#0f172a}.label{font:15px system-ui,sans-serif;fill:#334155}.small{font:13px system-ui,sans-serif;fill:#475569}.pin{font:600 15px ui-monospace,monospace;fill:#e2e8f0}.pinhead{font:700 20px system-ui,sans-serif;fill:#f8fafc}.wireR{fill:none;stroke:#dc2626;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.wireK{fill:none;stroke:#334155;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.wireB{fill:none;stroke:#2563eb;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.wireG{fill:none;stroke:#16a34a;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.wireP{fill:none;stroke:#9333ea;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.wireY{fill:none;stroke:#ca8a04;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.dotR{fill:#dc2626}.dotK{fill:#334155}.dotB{fill:#2563eb}.dotG{fill:#16a34a}.dotP{fill:#9333ea}.dotY{fill:#ca8a04}
+    </style>
+    <marker id="arrowR" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#dc2626"/></marker>
+  </defs>
+  <rect class="bg" width="1480" height="930"/>
+  <text x="48" y="54" class="title">ESP32-S3 BLE Air Mouse — wiring overview</text>
+  <text x="48" y="82" class="subtitle">Signal pins follow the supplied sketch. GPIO numbers refer to the ESP32-S3 board labels.</text>
+
+  <!-- Battery and power chain -->
+  <rect x="48" y="112" width="1384" height="204" rx="18" class="card"/>
+  <text x="76" y="148" class="head">BATTERY + CHARGING / BOOST POWER</text>
+  <rect x="78" y="172" width="200" height="100" rx="14" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+  <text x="178" y="207" text-anchor="middle" class="head">450 mAh</text>
+  <text x="178" y="232" text-anchor="middle" class="label">single-cell Li-ion/LiPo</text>
+  <text x="178" y="254" text-anchor="middle" class="small">+ / − polarity matters</text>
+  <text x="282" y="193" class="small">BAT+</text>
+  <path d="M278 207 H347" class="wireR"/>
+  <rect x="347" y="180" width="142" height="56" rx="10" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
+  <text x="418" y="204" text-anchor="middle" class="label">SPST switch</text>
+  <text x="418" y="224" text-anchor="middle" class="small">in battery + lead</text>
+  <path d="M489 207 H574" class="wireR"/>
+  <text x="500" y="193" class="small">to BAT+</text>
+  <path d="M278 247 H552 V258 H574" class="wireK"/>
+  <text x="372" y="266" class="small">BAT− direct to module</text>
+
+  <rect x="574" y="164" width="365" height="126" rx="14" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+  <text x="756" y="193" text-anchor="middle" class="head">TP4056 charger + 5 V boost</text>
+  <text x="598" y="220" class="label">BAT+ / BAT− ← cell</text>
+  <text x="598" y="245" class="label">OUT+ / 5V → ESP32 5V/VBUS</text>
+  <text x="598" y="270" class="label">OUT− / GND → common GND</text>
+  <path d="M939 224 H1030 V346 H675 V379" class="wireR" marker-end="url(#arrowR)"/>
+  <text x="963" y="214" class="small">boosted +5 V</text>
+  <path d="M939 267 H1005 V361 H844 V379" class="wireK"/>
+  <text x="964" y="257" class="small">GND</text>
+  <rect x="1056" y="174" width="340" height="100" rx="12" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
+  <text x="1078" y="202" class="head">USB charge input</text>
+  <text x="1078" y="228" class="label">Use the module's marked input port.</text>
+  <text x="1078" y="251" class="small">Follow that exact module's documentation.</text>
+
+  <!-- Controller -->
+  <rect x="500" y="379" width="450" height="330" rx="18" class="panel"/>
+  <text x="725" y="416" text-anchor="middle" class="pinhead">ESP32-S3 SuperMini</text>
+  <text x="535" y="461" class="pin">5V / VBUS  ← boost +5 V</text>
+  <text x="535" y="498" class="pin">GND       ← common ground</text>
+  <text x="535" y="535" class="pin">3V3       → MPU VCC</text>
+  <text x="535" y="572" class="pin">GPIO 8    ↔ MPU SDA</text>
+  <text x="535" y="609" class="pin">GPIO 9    ↔ MPU SCL</text>
+  <text x="535" y="646" class="pin">GPIO 10   ← left button</text>
+  <text x="535" y="683" class="pin">GPIO 11   ← right button</text>
+
+  <!-- Sensor -->
+  <rect x="1045" y="390" width="350" height="230" rx="16" class="card"/>
+  <text x="1220" y="427" text-anchor="middle" class="head">MPU-6050 breakout</text>
+  <text x="1080" y="485" class="label">VCC</text>
+  <text x="1080" y="522" class="label">GND</text>
+  <text x="1080" y="559" class="label">SDA</text>
+  <text x="1080" y="596" class="label">SCL</text>
+  <text x="1275" y="485" class="small">3.3 V</text>
+  <text x="1275" y="522" class="small">common</text>
+  <text x="1275" y="559" class="small">GPIO 8</text>
+  <text x="1275" y="596" class="small">GPIO 9</text>
+  <path d="M950 535 H990 V485 H1045" class="wireG"/>
+  <path d="M950 498 H1005 V522 H1045" class="wireK"/>
+  <path d="M950 572 H1015 V559 H1045" class="wireB"/>
+  <path d="M950 609 H1025 V596 H1045" class="wireP"/>
+
+  <!-- Buttons -->
+  <path d="M500 646 H464 V758 H405" class="wireY"/>
+  <path d="M500 683 H448 V813 H405" class="wireP"/>
+  <rect x="48" y="737" width="390" height="145" rx="16" class="card"/>
+  <text x="78" y="773" class="head">Two momentary buttons</text>
+  <circle cx="101" cy="812" r="7" class="dotY"/>
+  <text x="120" y="817" class="label">GPIO 10 → left click → GND</text>
+  <circle cx="101" cy="849" r="7" class="dotP"/>
+  <text x="120" y="854" class="label">GPIO 11 → right click → GND</text>
+
+  <!-- Ground bus and notes -->
+  <path d="M950 498 H975 V729 H1230 V620" class="wireK"/>
+  <path d="M975 729 V897 H460 V868 H438" class="wireK"/>
+  <text x="240" y="877" text-anchor="middle" class="small">button returns to common GND</text>
+  <text x="994" y="751" class="small">common ground</text>
+  <rect x="500" y="777" width="895" height="105" rx="14" fill="#fffbeb" stroke="#fcd34d" stroke-width="2"/>
+  <text x="526" y="809" class="head">Before power-up</text>
+  <text x="526" y="836" class="label">Verify the module's pad labels and measure its boost output (~5 V) before connecting to the ESP32 5V/VBUS pin.</text>
+  <text x="526" y="862" class="label">Set TP4056 charge current for the exact 450 mAh cell; the pictured module's setting is not confirmed.</text>
+</svg>
