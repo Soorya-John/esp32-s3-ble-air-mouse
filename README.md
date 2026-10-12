@@ -111,6 +111,5 @@ The buttons use `INPUT_PULLUP`; pressing a button should pull GPIO 10 or 11 to g
 - [TDK/InvenSense MPU-6000/MPU-6050 product specification](https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet.pdf)
 - [TP4056 datasheet (manufacturer)](https://www.toppwr.com/uploadfile/file/20240307/65e993d6379ea.pdf)
 
-## License
+## License`r`n`r`nThis project is licensed under the [MIT License](LICENSE).
 
-No license has been selected yet. Until one is added, don't assume the source or photos may be reused or redistributed.
