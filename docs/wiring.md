@@ -1,6 +1,6 @@
 # Wiring and power
 
-The pin assignments below come from the supplied sketch. The board photos show the assembled front and power side; they are reference photos, not a net-by-net view of every solder joint.
+The pin assignments below come from the ESP-IDF firmware. The board photos show the assembled front and power side; they are reference photos, not a net-by-net view of every solder joint.
 
 ## Logic and controls
 
@@ -8,9 +8,9 @@ The pin assignments below come from the supplied sketch. The board photos show t
 | --- | --- | --- |
 | MPU VCC | ESP32-S3 `3V3` | Use the 3.3 V rail so I²C logic is at ESP32-safe levels. |
 | MPU GND | Common GND | All circuit grounds must be connected. |
-| MPU SDA | ESP32-S3 GPIO 8 | `SDA_PIN` in the sketch. |
-| MPU SCL | ESP32-S3 GPIO 9 | `SCL_PIN` in the sketch. |
-| MPU XDA, XCL, AD0, INT | Not connected | The sketch does not use these pins. Leave AD0 in the state that gives I²C address `0x68`. |
+| MPU SDA | ESP32-S3 GPIO 8 | I2C SDA. |
+| MPU SCL | ESP32-S3 GPIO 9 | I2C SCL. |
+| MPU XDA, XCL, AD0, INT | Not connected | The firmware does not use these pins. Leave AD0 in the state that gives I²C address `0x68`. |
 | Left-click button | GPIO 10 and GND | `INPUT_PULLUP`; pressing closes the switch to ground. |
 | Right-click button | GPIO 11 and GND | `INPUT_PULLUP`; pressing closes the switch to ground. |
 
@@ -36,3 +36,6 @@ The module's exact power-path/load-sharing behavior is unknown from the photos. 
 - Confirm the battery has suitable protection and the charger module is configured for that cell. Stop if the battery swells, heats, or is damaged.
 
 See [`wiring.svg`](wiring.svg) for the overview. GPIO numbers refer to the ESP32-S3 pin labels, not perfboard hole positions.
+
+## Rotary encoder addition
+Connect A/CLK to GPIO 12, B/DT to GPIO 13 and common to GND. Use 3V3 for powered modules. Internal pull-ups are enabled; the push switch is unused. The SVG depicts the original build without this encoder.

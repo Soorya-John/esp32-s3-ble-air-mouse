@@ -9,7 +9,7 @@
   </defs>
   <rect class="bg" width="1480" height="930"/>
   <text x="48" y="54" class="title">ESP32-S3 BLE Air Mouse — wiring overview</text>
-  <text x="48" y="82" class="subtitle">Signal pins follow the supplied sketch. GPIO numbers refer to the ESP32-S3 board labels.</text>
+  <text x="48" y="82" class="subtitle">Signal pins follow the ESP-IDF firmware. GPIO numbers refer to the ESP32-S3 board labels.</text>
 
   <!-- Battery and power chain -->
   <rect x="48" y="112" width="1384" height="204" rx="18" class="card"/>

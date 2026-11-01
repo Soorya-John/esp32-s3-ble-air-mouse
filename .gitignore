@@ -10,3 +10,6 @@ build/
 .idea/
 .DS_Store
 Thumbs.db
+/build/
+/sdkconfig
+/sdkconfig.old
